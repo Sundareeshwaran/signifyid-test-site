@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# SignifyID Test Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a simple test client for SignifyID login flows, deployed on Vercel.[file:1]
 
-Currently, two official plugins are available:
+## Live application
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Login URL: https://signifyid.vercel.app/client/login[file:1]
 
-## React Compiler
+## Client configuration
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Use the following credentials when configuring or testing the SignifyID client in this project (for development/testing only):
 
-## Expanding the ESLint configuration
+- Client ID: `client_48d768a1b80b4ab0b68e80092c10727c`[file:1]
+- Client secret: `secret_3e4112a70ade44df93ee54bcd201ae23a7c45a98238444dc9c8210cebd39e136`[file:1]
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+> Do not use these values in production. Rotate or replace them with environment variables before deploying to any real environment.[file:1]
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Getting started
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Clone the repository:
+   - `git clone https://github.com/Sundareeshwaran/signifyid-test-site.git`[file:1]
+2. Install dependencies:
+   - `npm install` or `yarn install` (depending on your setup).[file:1]
+3. Configure environment variables:
+   - Set `CLIENT_ID` and `CLIENT_SECRET` using the values above or your own SignifyID credentials.[file:1]
+4. Run the development server:
+   - `npm run dev` or `yarn dev`.[file:1]
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Then open the login page at:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- `http://localhost:3000/client/login` (local)
+- `https://signifyid.vercel.app/client/login` (deployed)[file:1]
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Security note
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+If this is a public repository, move the client secret into an environment variable (`.env.local`) and **never** commit real secrets to Git.[web:9]
